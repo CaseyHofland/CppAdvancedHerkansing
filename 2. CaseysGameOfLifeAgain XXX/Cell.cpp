@@ -11,9 +11,18 @@ Cell::~Cell() {}
 
 void Cell::Behave() {}
 
-void Cell::SetState(CellState* cellState) {
+void Cell::SetState(int state) {
 	delete this->cellState;
-	this->cellState = cellState;
+
+	switch( state )
+	{
+	case ASLEEP:
+		this->cellState = new Asleep();
+	case DEAD:
+		this->cellState = new Dead();
+	case ALIVE:
+		this->cellState = new Alive();
+	}
 }
 
 const char Cell::State() const {

@@ -27,31 +27,29 @@ void Matrix::Print() const
 
 void Matrix::Clear() 
 {
-	for( int y = 0; y < matrix.size(); ++y )
-	{
-		for( int x = 0; x < matrix[y].size(); ++x )
-		{
-			delete matrix[y][x];
-			matrix[y][x] = new Cell();
-		}
-	}
+	for( int y = 0; y < (signed)matrix.size(); ++y )
+		for( int x = 0; x < (signed)matrix[y].size(); ++x )
+			SetState(x, y, DEAD);
 }
 
 void Matrix::SetAlive(int row, int column) 
 {
-	SetState(row, column, new Alive());
+	SetState(row, column, ALIVE);
 }
 
-void Matrix::SetState(int row, int column, CellState* cellState) 
+void Matrix::SetState(int row, int column, int cellState) 
 {
-	cout << "After this it should say Something: " << '\n';
-
 	if( column >= Height() || row >= Width() || matrix[column][row] == NULL )
 		return;
 
-	cout << "Something" << '\n';
-
 	matrix[column][row]->SetState(cellState);
+}
+
+void Matrix::Random() 
+{
+	for( int y = 0; y < (signed)matrix.size(); ++y )
+		for( int x = 0; x < (signed)matrix[y].size(); ++x )
+			SetState(x, y, static_cast<State>( rand() % (ALIVE + 1) ));
 }
 
 void Matrix::Next()

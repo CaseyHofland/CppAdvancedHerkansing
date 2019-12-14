@@ -8,7 +8,7 @@ public:
 	virtual ~Alive();
 	virtual void Behave() const;
 
-	virtual const char Symbol() const {
+	virtual const unsigned char Symbol() const {
 		return 254;
 	}
 };

@@ -16,7 +16,8 @@ public:
 
 	void Clear();
 	void SetAlive(int row, int column);
-	void SetState(int row, int column, CellState* cellState);
+	void SetState(int row, int column, int cellState);
+	void Random();
 	void Next();
 
 private:

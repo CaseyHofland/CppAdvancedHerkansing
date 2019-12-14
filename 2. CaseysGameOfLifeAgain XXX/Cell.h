@@ -4,6 +4,10 @@
 #include "CellState.h"
 using namespace std;
 
+enum State {
+	ASLEEP, DEAD, ALIVE
+};
+
 class Cell 
 {
 public:
@@ -14,7 +18,7 @@ public:
 	const char State() const;
 
 	void Behave();
-	void SetState(CellState* cellState);
+	void SetState(int state);
 
 private:
 	CellState* cellState;
