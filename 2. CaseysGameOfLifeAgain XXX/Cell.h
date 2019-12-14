@@ -4,10 +4,6 @@
 #include "CellState.h"
 using namespace std;
 
-enum State {
-	ASLEEP, DEAD, ALIVE
-};
-
 class Cell 
 {
 public:

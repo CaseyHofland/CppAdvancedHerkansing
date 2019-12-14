@@ -2,6 +2,7 @@
 #include "Alive.h"
 #include "Dead.h"
 #include "Asleep.h"
+#include "State.h"
 
 Cell::Cell() : cellState(new Dead()) {}
 
@@ -18,10 +19,13 @@ void Cell::SetState(int state) {
 	{
 	case ASLEEP:
 		this->cellState = new Asleep();
+		break;
 	case DEAD:
 		this->cellState = new Dead();
+		break;
 	case ALIVE:
 		this->cellState = new Alive();
+		break;
 	}
 }
 

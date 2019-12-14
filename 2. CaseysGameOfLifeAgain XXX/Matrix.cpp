@@ -1,8 +1,13 @@
 #include <iostream>
 #include "Matrix.h"
-#include "Alive.h"
+#include "State.h"
 
-Matrix::Matrix(int width, int height) : matrix(height, vector<Cell*>(width, new Cell())) {}
+Matrix::Matrix(int width, int height) : matrix(height, vector<Cell*>(width)) 
+{
+	for( auto& row : matrix )
+		for( auto& cell : row )
+			cell = new Cell();
+}
 
 Matrix::~Matrix() {}
 
@@ -29,27 +34,28 @@ void Matrix::Clear()
 {
 	for( int y = 0; y < (signed)matrix.size(); ++y )
 		for( int x = 0; x < (signed)matrix[y].size(); ++x )
-			SetState(x, y, DEAD);
+			SetStatePrivate(y, x, DEAD);
 }
 
-void Matrix::SetAlive(int row, int column) 
+void Matrix::SetAlive(int x, int y) 
 {
-	SetState(row, column, ALIVE);
+	SetState(x, y, ALIVE);
 }
 
-void Matrix::SetState(int row, int column, int cellState) 
+void Matrix::SetState(int x, int y, int state)
 {
-	if( column >= Height() || row >= Width() || matrix[column][row] == NULL )
-		return;
+	--x;
+	--y;
 
-	matrix[column][row]->SetState(cellState);
+	SetStatePrivate(y, x, state);
 }
 
-void Matrix::Random() 
+void Matrix::Random(int probability) 
 {
 	for( int y = 0; y < (signed)matrix.size(); ++y )
 		for( int x = 0; x < (signed)matrix[y].size(); ++x )
-			SetState(x, y, static_cast<State>( rand() % (ALIVE + 1) ));
+			if( rand() % 100 < probability )
+				SetStatePrivate(y, x, ALIVE);
 }
 
 void Matrix::Next()
@@ -58,4 +64,15 @@ void Matrix::Next()
 	for( auto& row : matrix )
 		for( auto& cell : row )
 			cell->Behave();
+}
+
+void Matrix::SetStatePrivate(int y, int x, int state) 
+{
+	if( y < 0 || y >= Height()
+		|| x < 0 || x >= Width()
+		|| state < 0 || state > ALIVE
+		|| matrix[y][x] == NULL )
+		return;
+
+	matrix[y][x]->SetState(state);
 }
