@@ -10,7 +10,15 @@ Cell::Cell(CellState* cellState) : cellState(cellState) {}
 
 Cell::~Cell() {}
 
-void Cell::Behave() {}
+void Cell::Behave() const
+{
+	cellState->Behave();
+}
+
+void Cell::Next() 
+{
+	SetState(cellState->nextState);
+}
 
 void Cell::SetState(int state) {
 	delete this->cellState;
@@ -29,6 +37,19 @@ void Cell::SetState(int state) {
 	}
 }
 
-const char Cell::State() const {
+void Cell::AddNeighbor(Cell* neighbor) 
+{
+	cellState->AddNeighbor(neighbor);
+}
+
+const char Cell::Symbol() const {
 	return cellState->Symbol();
+}
+
+const int Cell::State() const {
+	return cellState->State();
+}
+
+const int Cell::NextState() const {
+	return cellState->NextState();
 }

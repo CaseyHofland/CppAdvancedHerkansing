@@ -12,6 +12,7 @@ public:
 
 	const int Width() const;
 	const int Height() const;
+	const bool Empty() const;
 	void Print() const;
 
 	void Clear();
