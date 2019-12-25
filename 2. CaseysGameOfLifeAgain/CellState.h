@@ -10,19 +10,19 @@ class Cell;
 class CellState 
 {
 public:
+	CellState(Cell* cell) : cell(cell) {};
 	virtual ~CellState() {};
 	virtual void Behave() = 0;
 	
 	virtual const unsigned char Symbol() const = 0;
 	virtual const int State() const = 0;
-	virtual const int NextState() const;
+	const int CellState::NextState() const {
+		return nextState;
+	}
 
-	void AddNeighbor(Cell* neighbor);
-	
-	int nextState;
+	int nextState = DEAD;
 
 protected:
-	vector<Cell*> neighbors;
-	int AliveNeighbors();
-	int NextStateAliveNeighbors();
+	CellState(Cell* cell, int nextState) : cell(cell), nextState(nextState) {};
+	Cell* cell;
 };

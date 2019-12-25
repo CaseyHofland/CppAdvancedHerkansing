@@ -5,6 +5,7 @@
 class Asleep : public CellState 
 {
 public:
+	Asleep(Cell* cell) : CellState(cell, ASLEEP) {};
 	virtual ~Asleep() {};
 	virtual void Behave() {};
 

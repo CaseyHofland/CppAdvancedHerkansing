@@ -10,9 +10,12 @@ Matrix::Matrix(int width, int height) : matrix(height, vector<Cell*>(width))
 
 	for( int y = 0; y < Height(); ++y )
 		for( int x = 0; x < Width(); ++x )
-			for( int ry = y - 1; ry >= 0 && ry < Height() && ry <= y + 1; ++ry )
-				for( int rx = x - 1; rx >= 0 && rx < Width() && rx <= x + 1; ++rx )
-					matrix[y][x]->AddNeighbor(matrix[ry][rx]);
+			for( int ry = y - 1; ry < Height() && ry <= y + 1; ++ry )
+				for( int rx = x - 1; rx < Width() && rx <= x + 1; ++rx )
+					if( ry < 0 || rx < 0 )
+						continue;
+					else if(!(ry == y && rx == x))
+						matrix[y][x]->AddNeighbor(matrix[ry][rx]);
 }
 
 Matrix::~Matrix() {}
@@ -37,12 +40,23 @@ const bool Matrix::Empty() const
 
 void Matrix::Print() const 
 {
+	//for( auto const& row : matrix )
+	//{
+	//	for( auto const& cell : row )
+	//		if( cell->AliveNeighbors() != 0 )
+	//			cout << cell->AliveNeighbors();//cell->Symbol();
+	//		else
+	//			cout << " ";
+	//	cout << '\n';
+	//}
+
 	for( auto const& row : matrix )
 	{
 		for( auto const& cell : row )
 			cout << cell->Symbol();
 		cout << '\n';
 	}
+
 	cout << endl;
 }
 

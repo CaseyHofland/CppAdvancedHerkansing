@@ -5,6 +5,7 @@
 class Alive : public CellState 
 {
 public:
+	Alive(Cell* cell) : CellState(cell, ALIVE) {};
 	virtual ~Alive();
 	virtual void Behave();
 

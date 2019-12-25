@@ -21,6 +21,9 @@ public:
 	void Next();
 	void SetState(int state);
 	void AddNeighbor(Cell* neighbor);
+	int AliveNeighbors();
+	int NextStateAliveNeighbors();
 
 	CellState* cellState;
+	vector<Cell*> neighbors;
 };
