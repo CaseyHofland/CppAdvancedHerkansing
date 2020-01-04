@@ -4,6 +4,8 @@
 #include <iterator>
 #include <mutex>
 
+// A wrapper class for our vector. Not much to see other than every vector method (minus a few weird ones) 
+// wrapped within a mutex lock.
 template<typename T>
 class ConcurrentVector 
 {

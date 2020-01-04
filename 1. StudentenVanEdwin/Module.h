@@ -33,9 +33,11 @@ private:
 
 	string name;
 	int ec;
-	Docent* docent = NULL;
+	Docent* docent = nullptr;
 	vector<Student*> students;
 
+	// We make Docent and Student friend classes so that Module can safely Add and Remove itself to them 
+	// without causing an infinite loop
 	friend class Docent;
 	friend class Student;
 };

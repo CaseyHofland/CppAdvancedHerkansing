@@ -3,6 +3,8 @@
 #include <iostream>
 #include "Parent.h"
 
+// Testing different kinds of pointers
+
 void Moved() {
 	Parent* p1 = new Parent("Parent1");
 	std::cout << "p1:" << *p1 << std::endl;
@@ -42,13 +44,13 @@ void Normal() {
 	Parent* p1 = new Parent("Parent1");
 	std::cout << "p1:" << *p1 << std::endl;
 
-	Parent* p2 = new Parent(*p1); // roept de copy constructor aan
+	Parent* p2 = new Parent(*p1); // calls the copy constructor
 	std::cout << "p2:" << *p2 << std::endl;
 
 	Parent* p3 = new Parent("Parent3");
 	std::cout << "p3:" << *p3 << std::endl;
 
-	*p3 = *p1; // roept de assignment operator aan
+	*p3 = *p1; // calls the assignment operator
 	std::cout << "p1:" << *p3 << std::endl;
 
 	delete p1;

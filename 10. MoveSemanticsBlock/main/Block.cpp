@@ -53,7 +53,7 @@ Block::Block(Block&& other) noexcept {
 	data = other.data;
 	size = other.size;
 
-	// 'reset' 't originele object
+	// 'reset' the original object
 	other.name = "(nodata: has been moved)";
 	other.size = 0;
 	other.data = nullptr;

@@ -6,7 +6,7 @@ Docent::Docent(string name) : name(name) {}
 Docent::~Docent() 
 {
 	for( auto& module : modules )
-		module->docent = NULL;
+		module->docent = nullptr;
 }
 
 const string Docent::Name() const

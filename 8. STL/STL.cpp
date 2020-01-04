@@ -7,12 +7,14 @@
 #include <functional>
 using namespace std;
 
+// A test for STL (standard template library) functions
+
 int main()
 {
     const vector<string> colors{"red", "green", "white", "blue", "orange", "green", "orange", "black", "purple"};
-    // gebruik functies uit <algorithm> en <functional> om (steeds vanuit een ORIGINELE copie van deze vector)
+    // use the functions from <algorithm> and <functional> to (from an original copy)...
     
-    // 1) de vector in 2 nieuwe vectoren te splitsen: 1 met alles wat alfabetisch voor 'purple' komt, 1 met alles er na
+    // 1) split the vector in 2: 1 with everything alphabetically before 'purple' and 1 with everything after
     {
         cout << "Opdracht 1: " << '\n';
 
@@ -33,7 +35,7 @@ int main()
         cout << endl;
     }
 
-    // 2) alle elementen UPPERCASE te maken.
+    // 2) make all elements UPPERCASE
     {
         cout << "Opdracht 2: " << '\n';
 
@@ -52,7 +54,7 @@ int main()
         cout << endl;
     }
 
-    // 3) alle dubbele te verwijderen
+    // 3) remove all duplicates
     {
         cout << "Opdracht 3: " << '\n';
 
@@ -70,9 +72,9 @@ int main()
     }
 
     const vector<double> numbers{10, 324422, 6, -23, 234.5, 654.1, 3.1242, -9.23, 635};
-    // gebruik functies uit <algorithm> en <functional> om (steeds vanuit een ORIGINELE copie van deze vector)
+    // use the functions from <algorithm> and <functional> to (from an original copy)...
 
-    // 1) alle negatieve elementen te verwijderen
+    // 1) remove all negative elements
     {
         cout << "Opdracht 4: " << '\n';
 
@@ -90,7 +92,7 @@ int main()
         cout << endl;
     }
 
-    // 2) voor alle elementen te bepalen of ze even of oneven zijn
+    // 2) decide for all elements if they are even or uneven
     {
         cout << "Opdracht 5: " << '\n';
 
@@ -105,13 +107,15 @@ int main()
         cout << endl;
     }
 
-    // 3) de som, het gemiddelde, en het product van alle getallen te berekenen
+    // 3) calculate the sum, the average and the product of all numbers
     {
         cout << "Opdracht 6: " << '\n';
 
         auto numbersCopy = numbers;
         double sum = accumulate(numbersCopy.begin(), numbersCopy.end(), double(0), plus<double>());
         double average = sum / numbersCopy.size();
+        // TODO: find a way for the product to return a larger precision float number (I suspect the problem to lie in 
+        // the multiplies<T>() function)
         long double product = accumulate(numbersCopy.begin(), numbersCopy.end(), long double(1), multiplies<long double>());
         auto precision = cout.precision();
         cout.precision(10);

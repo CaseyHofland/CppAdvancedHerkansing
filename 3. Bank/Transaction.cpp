@@ -3,6 +3,8 @@
 #include <sstream>
 #include <iomanip>
 
+// Used for storing data about a transaction and logging it
+
 Transaction::Transaction(TransactionType type, double amount) : type(type), amount(amount) {}
 
 Transaction::~Transaction() {}
@@ -26,11 +28,6 @@ const string Transaction::GetAmount() const
 
 const string Transaction::GetDate() const 
 {
-	/*
-	ctime_s(transactionDate, sizeof transactionDate, &date);
-	return transactionDate;
-	*/
-
 	char transactionDate[128];
 	struct tm localTime;
 	localtime_s(&localTime, &date);

@@ -1,7 +1,9 @@
 #pragma once
 
-namespace Edwin_Bed_win {
-	class NPC {
+namespace npc 
+{
+	class NPC 
+	{
 	public:
 		NPC();
 		virtual ~NPC();

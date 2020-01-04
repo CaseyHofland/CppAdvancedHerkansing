@@ -1,7 +1,7 @@
 #include "NPC.h"
 
-namespace Edwin_Bed_win {
+namespace npc 
+{
 	NPC::NPC() {}
-
 	NPC::~NPC() {}
 }

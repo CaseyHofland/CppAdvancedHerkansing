@@ -1,13 +1,14 @@
 #include <iostream>
 #include "Knight.h"
 
-namespace Edwin_Bed_win {
+namespace npc 
+{
 	Knight::Knight(NPC* npc) : Role(npc) {}
 
 	Knight::~Knight() {}
 
 	void Knight::draw() const {
 		Role::draw();
-		std::cout << "I am Knicht" << std::endl;
+		std::cout << "Role: Knight" << std::endl;
 	}
 }

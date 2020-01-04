@@ -1,5 +1,9 @@
 #include "BankAccount.h"
 
+// TODO: find a plugin for decimal and use that in place of double
+
+// Used for storing data about a bankaccount and keeping a history of all past transactions
+
 BankAccount::BankAccount() {}
 
 BankAccount::BankAccount(double startingBalance) 

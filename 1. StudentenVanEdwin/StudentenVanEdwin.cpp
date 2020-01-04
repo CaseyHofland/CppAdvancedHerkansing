@@ -14,9 +14,8 @@ string hr()
 int main() 
 {
 	// We are settings up all the docents, students and modules so we can do some simple tests revolving pointers and references
-	// Though the references weren't required, I did them anyway.
 	Docent* const edwin = new Docent("Edwin");
-	Docent* const raf = new Docent("Raf");
+	Docent* raf = new Docent("Raf");
 	Docent* const tim = new Docent("Tim");
 
 	Student* const nathan = new Student("Nathan");
@@ -34,30 +33,29 @@ int main()
 	Module* const art = new Module("Art", 4, raf);
 	Module* const design = new Module("Design", 3, tim);
 
+	// Now lets pass our modules to students or students to modules (2 different ways possible)
 	prog->AddStudents({nathan, casey, geoffrey, max});
+	art->AddStudents({luuk, vanessa, nathalie, hidde});
 
 	casey->AddModule(design);
 	mirna->AddModule(design);
-	luuk->AddModule(art);
-	vanessa->AddModules({art, design});
-	nathalie->AddModule(art);
+	vanessa->AddModule(design);
 	marnix->AddModules({prog, art, design});
-	hidde->AddModule(art);
 
-	// 1) print een lijst van modules, met docent & studenten
+	// 1) print a list of modules, with docents & students
 	cout << *prog << *art << *design << hr() << endl;
 
-	// 2) toon totaal EC per student
+	// 2) show the total EC per student
 	cout << *nathan << *casey << *geoffrey << *mirna << *luuk << *max << *vanessa << *nathalie << *marnix << *hidde << hr() << endl;
 
-	// 3) wijzig EC van module 1: toon totaal EC per student
+	// 3) change EC of module 1: show total EC per student
 	int oldEC = prog->EC();
 	prog->SetEC(100);
 	cout << prog->Name() << " EC changed from " << oldEC << " EC to " << prog->EC() << " EC" << '\n';
 	cout << '\n';
 	cout << *nathan << *casey << *geoffrey << *mirna << *luuk << *max << *vanessa << *nathalie << *marnix << *hidde << hr() << endl;
 
-	// 4) verwijder student uit module & toon lijst opnieuw
+	// 4) remove student from module & show list again
 	casey->RemoveModules({design, prog});
 	cout << "Casey removed from design and programming" << '\n';
 	cout << '\n';
@@ -69,10 +67,10 @@ int main()
 	cout << '\n';
 	cout << *prog << *art << *design << hr() << endl;
 
-	// 5) delete pointers at runtime
+	// 5) delete pointers and show list again
 	delete prog;
 	delete luuk;
-	//delete tim;
+	//delete raf;	<= unfortunately, this line would cause errors. Possibly could be fixed with shared / weak pointers?
 
 	cout << "Programming and Luuk deleted" << '\n';
 	cout << '\n';

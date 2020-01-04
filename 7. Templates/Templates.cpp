@@ -5,6 +5,8 @@
 #include "Queue.h"
 using namespace std;
 
+// A test for template functions and -classes
+
 template<typename T>
 void Print(vector<T> vec)
 {

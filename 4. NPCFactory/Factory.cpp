@@ -9,32 +9,34 @@ Factory::Factory() {}
 
 Factory::~Factory() {}
 
-Edwin_Bed_win::NPC* Factory::createNPC(Race race, Roles roles) {
-	Edwin_Bed_win::NPC* npc = nullptr;
+// This creates a new NPC based on a Race and a Role the user selects
+npc::NPC* Factory::createNPC(Race race, Role roles) 
+{
+	npc::NPC* npc = nullptr;
 
 	switch( race )
 	{
 	case Race::Human:
-		npc = new Edwin_Bed_win::Human();
+		npc = new npc::Human();
 		break;
 	case Race::Orc:
-		npc = new Edwin_Bed_win::Orc();
+		npc = new npc::Orc();
 		break;
 	default:
 		break;
 	}
 
-	if( roles & Roles::Farmer )
+	if( static_cast<int>(roles & Role::Farmer) )
 	{
-		npc = new Edwin_Bed_win::Farmer(npc);
+		npc = new npc::Farmer(npc);
 	}
-	if( roles & Roles::Knight )
+	if( static_cast<int>( roles & Role::Knight ) )
 	{
-		npc = new Edwin_Bed_win::Knight(npc);
+		npc = new npc::Knight(npc);
 	}
-	if( roles & Roles::Shaman )
+	if( static_cast<int>( roles & Role::Shaman ) )
 	{
-		npc = new Edwin_Bed_win::Shaman(npc);
+		npc = new npc::Shaman(npc);
 	}
 
 	return npc;

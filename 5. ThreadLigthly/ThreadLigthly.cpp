@@ -5,6 +5,9 @@
 #include "ConcurrentVector.h"
 using namespace std;
 
+// This is a test for creating a 'Concurrent Vector', or a thread-safe vector. There are probably ways to
+// break it, but I'll leave that as an exercise for you.
+
 int main()
 {
 	ConcurrentVector<int> concurrentVector;

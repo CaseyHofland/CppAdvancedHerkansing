@@ -4,7 +4,11 @@
 #include <vector>
 #include "Factory.h"
 
-void draw(std::vector<Edwin_Bed_win::NPC*> npcs) {
+// The only interesting files in this project is the Factory. Everything else is used for testing the factory.
+
+// Draws all npcs in a list (used for testing)
+void draw(std::vector<npc::NPC*> npcs) 
+{
 	for( auto& npc : npcs )
 	{
 		npc->draw();
@@ -14,10 +18,10 @@ void draw(std::vector<Edwin_Bed_win::NPC*> npcs) {
 
 int main()
 {
-	std::vector<Edwin_Bed_win::NPC*> npcs;
+	std::vector<npc::NPC*> npcs;
 
 	Factory factory = Factory();
-	npcs.push_back(factory.createNPC(Race::Orc, Roles::Shaman | Roles::Farmer ));
+	npcs.push_back(factory.createNPC(Race::Orc, Role::Shaman | Role::Farmer ));
 
 	draw(npcs);
 

@@ -61,10 +61,10 @@ void Module::RemoveStudents(vector<Student*> students)
 
 void Module::EraseDocent() 
 {
-	if( docent != NULL )
+	if(docent)
 	{
 		docent->modules.erase(remove(docent->modules.begin(), docent->modules.end(), this), end(docent->modules));
-		docent = NULL;
+		docent = nullptr;
 	}
 }
 
@@ -72,7 +72,7 @@ ostream& operator<<(ostream& os, const Module& module)
 {
 	os << module.name << ":" << '\n';
 	os << "  EC:       " << module.ec << '\n';
-	os << "  Docent:   " << (( module.docent != NULL ) ? module.docent->Name() : "-") << '\n';
+	os << "  Docent:   " << (module.docent ? module.docent->Name() : "-") << '\n';
 	os << "  Students: " << '\n';
 
 	for(auto const& student : module.students)

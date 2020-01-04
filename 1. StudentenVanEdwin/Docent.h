@@ -20,5 +20,7 @@ private:
 	string name;
 	vector<Module*> modules;
 
+	// We make Module a friend class so that Docent can safely Add and Remove itself to it 
+	// without causing an infinite loop
 	friend class Module;
 };

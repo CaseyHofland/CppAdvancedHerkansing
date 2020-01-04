@@ -1,12 +1,13 @@
 #include <iostream>
 #include "Orc.h"
 
-namespace Edwin_Bed_win {
+namespace npc 
+{
 	Orc::Orc() {}
 
 	Orc::~Orc() {}
 
 	void Orc::draw() const {
-		std::cout << "Orciworky" << std::endl;
+		std::cout << "Race: Orc" << std::endl;
 	}
 }

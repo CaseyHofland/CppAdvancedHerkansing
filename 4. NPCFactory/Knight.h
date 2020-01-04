@@ -2,8 +2,10 @@
 
 #include "Role.h"
 
-namespace Edwin_Bed_win {
-	class Knight : public Role {
+namespace npc 
+{
+	class Knight : public Role 
+	{
 	public:
 		Knight(NPC* npc);
 		~Knight();

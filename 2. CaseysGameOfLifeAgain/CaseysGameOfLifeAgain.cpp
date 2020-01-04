@@ -31,9 +31,9 @@ int main()
 	matrix->Random(60);
 	//CreateGliderGun();
 	
+	// TODO: create a double buffer for smooth drawing to the console
+	// Prints at least once and then until every cell has fallen asleep
 	matrix->Print();
-	
-	// Print until every cell has fallen asleep
 	while( !matrix->Empty() )
 	{
 		matrix->Next();
